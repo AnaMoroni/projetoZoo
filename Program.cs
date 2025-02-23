@@ -1,4 +1,5 @@
-﻿using System;
+﻿using aplicacaoZoologico.models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,8 @@ namespace aplicacaoZoologico
     {
         static void Main(string[] args)
         {
+            Form1 form = new Form1();
+            form.ShowDialog();
         }
     }
 }

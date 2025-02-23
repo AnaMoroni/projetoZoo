@@ -26,14 +26,30 @@ namespace aplicacaoZoologico
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string nome = txtNome.Text;
-            string especie = txtEspecie.Text;
-            string sexo=txtSexo.Text;
-            string dataNascimento = txtDataNasc.Text;
-            string observacao=txtObservacao.Text;
+            Animal a = new Animal();
+            a.nome_animal = txtNome.Text; 
+            a.especie = txtEspecie.Text;
+            a.sexo_animal = txtSexo.Text;
+            a.dataNascimento = Convert.ToDateTime(txtDataNasc.Text);
+            a.observacao_animal=txtObservacao.Text;
+
+            //gerarc objeto animal new animal e recebe animal 
 
             AnimalDAO animalDAO = new AnimalDAO();
-            animalDAO.Salvar(nome, especie, sexo, dataNascimento, observacao);
+            animalDAO.Salvar(a);
+
+            MessageBox.Show("Animal salvo com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            this.Close();
+        }
+
+        private void FormCadastro_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

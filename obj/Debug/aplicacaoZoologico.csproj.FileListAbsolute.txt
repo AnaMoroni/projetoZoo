@@ -40,3 +40,5 @@ C:\Users\99332\source\repos\aplicacaoZoologico\bin\Debug\System.Threading.Tasks.
 C:\Users\99332\source\repos\aplicacaoZoologico\obj\Debug\aplicaca.6FB7EC27.Up2Date
 C:\Users\99332\source\repos\aplicacaoZoologico\obj\Debug\aplicacaoZoologico.exe
 C:\Users\99332\source\repos\aplicacaoZoologico\obj\Debug\aplicacaoZoologico.pdb
+C:\Users\99332\source\repos\aplicacaoZoologico\obj\Debug\aplicacaoZoologico.FormCadastro.resources
+C:\Users\99332\source\repos\aplicacaoZoologico\obj\Debug\aplicacaoZoologico.FormEditar.resources

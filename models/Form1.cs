@@ -1,4 +1,5 @@
-﻿using System;
+﻿using aplicacaoZoologico.DAO;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -21,6 +22,35 @@ namespace aplicacaoZoologico.models
         {
             FormCadastro formulario = new FormCadastro();
             formulario.Show();
+        }
+
+        private void btExcluir_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btEditar_Click(object sender, EventArgs e)
+        {
+            int idAnimal = Convert.ToInt32(dgvAnimal.SelectedRows[0].Cells["id_animal"].Value);
+            AnimalDAO animalDAO = new AnimalDAO();
+            Animal animal = animalDAO.BuscarId(idAnimal);
+
+            if (animal != null)
+            {
+                
+                FormEditar formEditar = new FormEditar(animal);
+                formEditar.ShowDialog(); 
+            }else
+            {
+                Console.WriteLine("Registro não encontrado no banco!");
+            }
+        }
+
+        private void dgvAnimal_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            AnimalDAO animalDAO = new AnimalDAO();
+            List<Animal> animais = animalDAO.List();
+            dgvAnimal.DataSource = animais;
         }
     }
 }
