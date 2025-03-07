@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace aplicacaoZoologico.models
 {
-   internal class Animal
+   public class Animal
     {
         public int id_animal;
         public string nome_animal;
@@ -14,5 +14,6 @@ namespace aplicacaoZoologico.models
         public DateTime dataNascimento;
         public string sexo_animal;
         public string observacao_animal;
+        //public int id_habitat;
     }
 }

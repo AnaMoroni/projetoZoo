@@ -42,3 +42,4 @@ C:\Users\99332\source\repos\aplicacaoZoologico\obj\Debug\aplicacaoZoologico.exe
 C:\Users\99332\source\repos\aplicacaoZoologico\obj\Debug\aplicacaoZoologico.pdb
 C:\Users\99332\source\repos\aplicacaoZoologico\obj\Debug\aplicacaoZoologico.FormCadastro.resources
 C:\Users\99332\source\repos\aplicacaoZoologico\obj\Debug\aplicacaoZoologico.FormEditar.resources
+C:\Users\99332\source\repos\aplicacaoZoologico\obj\Debug\aplicacaoZoologico.Properties.Resources.resources

@@ -16,30 +16,22 @@ namespace aplicacaoZoologico
 
     public partial class FormEditar : Form
     {
-            private Animal a;
-
-            public FormEditar(Animal animal)
+        private Animal _animal;
+        
+        public FormEditar(Animal animal)
             {
             InitializeComponent();
-            a = animal;
-            CarregarDados(a);
+            _animal = animal;
 
-            }
-        public void CarregarDados(Animal a)
-        {
-            try
-            {
-                txtNome.Text = a.especie;
-                txtEspecie.Text = a.especie;
-                txtSexo.Text = a.sexo_animal;
-                txtDataNasc.Text = a.dataNascimento.ToString("dd/mm/yyyy");
-                txtObservacao.Text = a.observacao_animal;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Erro ao carregar dados do animal selecionado!" + ex.Message);
-            }
+            
+            txtNome.Text = _animal.nome_animal;
+            txtEspecie.Text = _animal.especie;
+            dtpDataNascimento.Value = _animal.dataNascimento;
+            txtSexo.Text = _animal.sexo_animal;
+            txtObservacao.Text = _animal.observacao_animal;
+            //cbHabitat.Text = _animal.id_habitat.ToString();
         }
+      
         private void label1_Click(object sender, EventArgs e)
         {
 
@@ -107,20 +99,46 @@ namespace aplicacaoZoologico
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Animal a = new Animal();
-            a.nome_animal = txtNome.Text;
-            a.especie = txtEspecie.Text;
-            a.sexo_animal = txtSexo.Text;
-            a.dataNascimento = Convert.ToDateTime(txtDataNasc.Text);
-            a.observacao_animal = txtObservacao.Text;
+            try
+            {
+                
+                _animal.nome_animal = txtNome.Text;
+                _animal.especie = txtEspecie.Text;
+                _animal.dataNascimento = dtpDataNascimento.Value;
+                _animal.sexo_animal = txtSexo.Text;
+                _animal.observacao_animal = txtObservacao.Text;
+               // _animal.id_habitat = cbHabitat.SelectedIndex + 1;
 
-            //gerarc objeto animal new animal e recebe animal 
+                // Chama o método para atualizar no banco de dados
+                AnimalDAO animalDAO = new AnimalDAO();
+                animalDAO.Atualizar(_animal);
 
-            AnimalDAO animalDAO = new AnimalDAO();
-            animalDAO.Salvar(a);
+                MessageBox.Show("Animal atualizado com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            MessageBox.Show("Informações do animal editadas com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            this.Close();
+                Form1 form1 = new Form1();
+                form1.CarregarDados();
+
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao atualizar o animal: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FormEditar_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -23,33 +23,50 @@ namespace aplicacaoZoologico
         {
 
         }
-
+      
         private void button1_Click(object sender, EventArgs e)
         {
-            Animal a = new Animal();
-            a.nome_animal = txtNome.Text; 
-            a.especie = txtEspecie.Text;
-            a.sexo_animal = txtSexo.Text;
-            a.dataNascimento = Convert.ToDateTime(txtDataNasc.Text);
-            a.observacao_animal=txtObservacao.Text;
+            try
+            {
+                Animal a = new Animal();
+                a.nome_animal = txtNome.Text;
+                a.especie = txtEspecie.Text;
+                a.dataNascimento = dtpDataNascimento.Value;
+                a.sexo_animal = txtSexo.Text;
+                a.observacao_animal = txtObservacao.Text;
+                //a.id_habitat = cbHabitat.Text;
 
-            //gerarc objeto animal new animal e recebe animal 
 
-            AnimalDAO animalDAO = new AnimalDAO();
-            animalDAO.Salvar(a);
+                AnimalDAO animalDAO = new AnimalDAO();
+                animalDAO.Salvar(a);
 
-            MessageBox.Show("Animal salvo com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            this.Close();
+                MessageBox.Show("Animal salvo com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Form1 form1 = new Form1();
+                form1.CarregarDados();
+                this.Close(); 
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocorreu um erro: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
+
 
         private void FormCadastro_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
